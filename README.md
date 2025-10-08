@@ -83,13 +83,13 @@ Visualizations using matplotlib, seaborn, and plotly
 
 Screenshots included:
 
-Screenshot (91) – Executive Summary: KPIs, Monthly Sales Trend, Top Customers, Segment Sales Share
+Executive Summary: KPIs, Monthly Sales Trend, Top Customers, Segment Sales Share
 
-Screenshot (92) – Sales Insights: Sales by state, shipping mode analysis, top products driving revenue
+Sales Insights: Sales by state, shipping mode analysis, top products driving revenue
 
-Screenshot (93) – Profit Insights: Segment-wise profit share, top products by profit, low-margin categories
+Profit Insights: Segment-wise profit share, top products by profit, low-margin categories
 
-Screenshot (94) – Discounts & Customer Behavior: Discounts trend, top customers benefiting, discount distribution
+Discounts & Customer Behavior: Discounts trend, top customers benefiting, discount distribution
 
 🚀 How to Run
 1️⃣ SQL
