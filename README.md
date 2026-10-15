@@ -47,10 +47,12 @@ Retail stakeholders need reliable measures to compare performance across product
 
 ## 📂 Dataset
 
-Superstore.csv is included. The prior README mentioned 9,994 rows; verify this and the source/licensing before publishing it as a fact.
+The saved notebook loads **9,994 rows × 21 columns** from `Superstore.csv`. Its saved `df.info()` output reports 9,994 non-null values for each column.
 
-- **Privacy and licensing:** Check source terms and avoid publishing personal, sensitive, or restricted data.
-- **Preprocessing:** Follow the actual SQL/notebook/report implementation; do not assume cleaning steps or row counts that have not been verified.
+- **Source file:** `Superstore.csv`
+- **Fields:** order and customer details, order/ship dates, ship mode, geography, product/category, sales, quantity, discount, and profit.
+- **Target variable:** None for the descriptive SQL/BI analysis.
+- **Provenance/license:** Document the original dataset publisher and license before redistribution.
 
 ## 🛠️ Tech Stack
 
@@ -104,13 +106,19 @@ Run SQL and notebook after confirming paths and schema; open the PBIX in Power B
 
 ## 📊 Results and Insights
 
-### Key Findings
+### Verified dataset checks from saved notebook output
 
-No numeric findings are asserted here. Add verified results from the included analysis and dashboard.
+| Check | Recorded result |
+|---|---:|
+| Rows | 9,994 |
+| Columns | 21 |
+| Non-null values | 9,994 in each column |
 
-### Evaluation
+### SQL analysis available
 
-For analytics projects, reconcile key totals and document metric definitions. For ML projects, report the baseline, split strategy, relevant metrics, and held-out evaluation results. Do not include unverified scores or business impact claims.
+The SQL script defines queries for total sales, profit, quantity, distinct orders/customers/products, profit margin, loss-making lines/orders, region and segment performance, category/sub-category performance, product/customer rankings, shipping modes, geography, discount bands, and monthly trends.
+
+The notebook output reviewed here does **not** contain saved numerical results for these aggregate SQL queries. I have therefore not invented sales or profit totals. Run `superstore_analysis.sql` against the current dataset and add the actual query outputs. The script uses PostgreSQL-style functions such as `DATE_TRUNC` and `TO_DATE`.
 
 ## 🖼️ Screenshots
 
@@ -124,9 +132,10 @@ No image files were confirmed for this repository during this update. If you hav
 
 ## ⚠️ Limitations
 
-- Dataset source, currency, and license should be documented.
-- Discount/profit relationships are descriptive and do not alone establish causation.
-- No screenshot files were found in the repository.
+- Dataset checks come from saved notebook output and should be rerun against the current CSV.
+- Aggregate KPI values have not been recorded in the notebook output reviewed here.
+- Dataset provenance/license should be documented.
+- Discount/profit relationships are descriptive and do not by themselves establish causation.
 
 ## 🚀 Future Improvements
 
