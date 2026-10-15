@@ -1,12 +1,39 @@
--- Superstore Sales Analysis (PostgreSQL)
--- Prerequisite: import Superstore.csv into a PostgreSQL table named
--- superstore_raw, preserving the original CSV header names as quoted columns.
--- Example: use your DB client's CSV import tool; this script does not create/import the database.
+-- Superstore Sales Analysis (PostgreSQL / psql)
+-- Prerequisite: run this script from the repository root, where Superstore.csv exists.
+-- The CSV is imported into a raw staging table with its original headers.
+-- Run this script only once on a fresh database, or truncate the staging table before re-importing.
+
+CREATE TABLE IF NOT EXISTS superstore_raw (
+  "Row ID" INTEGER,
+  "Order ID" TEXT,
+  "Order Date" TEXT,
+  "Ship Date" TEXT,
+  "Ship Mode" TEXT,
+  "Customer ID" TEXT,
+  "Customer Name" TEXT,
+  "Segment" TEXT,
+  "Country" TEXT,
+  "City" TEXT,
+  "State" TEXT,
+  "Postal Code" INTEGER,
+  "Region" TEXT,
+  "Product ID" TEXT,
+  "Category" TEXT,
+  "Sub-Category" TEXT,
+  "Product Name" TEXT,
+  "Sales" NUMERIC(12,3),
+  "Quantity" INTEGER,
+  "Discount" NUMERIC(8,4),
+  "Profit" NUMERIC(12,4)
+);
+
+-- In psql, import the CSV with:
+-- \copy superstore_raw FROM 'Superstore.csv' WITH (FORMAT csv, HEADER true)
 
 DROP VIEW IF EXISTS ss_dates;
 DROP VIEW IF EXISTS ss;
 
-CREATE VIEW ss AS
+CREATE OR REPLACE VIEW ss AS
 SELECT
   "Row ID"        AS row_id,
   "Order ID"      AS order_id,
@@ -31,17 +58,15 @@ SELECT
   "Profit"        AS profit
 FROM superstore_raw;
 
-CREATE VIEW ss_dates AS
+CREATE OR REPLACE VIEW ss_dates AS
 SELECT
   s.*,
   TO_DATE(order_date_str, 'MM/DD/YYYY') AS order_date,
-  TO_DATE(ship_date_str, 'MM/DD/YYYY') AS ship_date
+  TO_DATE(ship_date_str,  'MM/DD/YYYY') AS ship_date
 FROM ss s;
 
--- Quick validation checks
 SELECT COUNT(*) AS row_count FROM ss;
-SELECT COUNT(*) AS rows_with_missing_sales
-FROM ss WHERE sales IS NULL;
+SELECT * FROM ss LIMIT 5;
 
 /*===============================================================
 =            1) Global KPIs                                     
