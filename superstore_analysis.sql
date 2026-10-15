@@ -1,14 +1,12 @@
-create database superstore;
+-- Superstore Sales Analysis (PostgreSQL)
+-- Prerequisite: import Superstore.csv into a PostgreSQL table named
+-- superstore_raw, preserving the original CSV header names as quoted columns.
+-- Example: use your DB client's CSV import tool; this script does not create/import the database.
 
-use superstore;
-SELECT COUNT(*) AS row_count FROM ss;
-
-SELECT * FROM ss LIMIT 5;
-
-DROP VIEW IF EXISTS ss;
 DROP VIEW IF EXISTS ss_dates;
+DROP VIEW IF EXISTS ss;
 
-CREATE OR REPLACE VIEW ss AS
+CREATE VIEW ss AS
 SELECT
   "Row ID"        AS row_id,
   "Order ID"      AS order_id,
@@ -31,18 +29,19 @@ SELECT
   "Quantity"      AS quantity,
   "Discount"      AS discount,
   "Profit"        AS profit
-FROM ss;
+FROM superstore_raw;
 
-
-
-CREATE OR REPLACE VIEW ss_dates AS
+CREATE VIEW ss_dates AS
 SELECT
   s.*,
   TO_DATE(order_date_str, 'MM/DD/YYYY') AS order_date,
-  TO_DATE(ship_date_str,  'MM/DD/YYYY') AS ship_date
+  TO_DATE(ship_date_str, 'MM/DD/YYYY') AS ship_date
 FROM ss s;
 
-
+-- Quick validation checks
+SELECT COUNT(*) AS row_count FROM ss;
+SELECT COUNT(*) AS rows_with_missing_sales
+FROM ss WHERE sales IS NULL;
 
 /*===============================================================
 =            1) Global KPIs                                     
