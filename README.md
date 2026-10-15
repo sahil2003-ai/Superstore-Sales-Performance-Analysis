@@ -47,12 +47,21 @@ Retail stakeholders need reliable measures to compare performance across product
 
 ## 📂 Dataset
 
-The saved notebook loads **9,994 rows × 21 columns** from `Superstore.csv`. Its saved `df.info()` output reports 9,994 non-null values for each column.
+I recalculated the figures below directly from the repository's `Superstore.csv` contents.
 
-- **Source file:** `Superstore.csv`
-- **Fields:** order and customer details, order/ship dates, ship mode, geography, product/category, sales, quantity, discount, and profit.
-- **Target variable:** None for the descriptive SQL/BI analysis.
-- **Provenance/license:** Document the original dataset publisher and license before redistribution.
+| Dataset check | Recalculated result |
+|---|---:|
+| Rows | 9,994 |
+| Columns | 21 |
+| Non-empty cells | All 21 columns have values in all 9,994 rows |
+| Unique orders | 5,009 |
+| Unique customers | 793 |
+| Unique products | 1,862 |
+| Quantity sold | 37,873 |
+
+**Fields:** order/customer details, order and ship dates, shipping mode, geography, product/category, sales, quantity, discount, and profit. This is a descriptive analysis; there is no modelling target.
+
+**Source/license:** Document the original dataset publisher and reuse terms before redistributing the CSV.
 
 ## 🛠️ Tech Stack
 
@@ -106,19 +115,36 @@ Run SQL and notebook after confirming paths and schema; open the PBIX in Power B
 
 ## 📊 Results and Insights
 
-### Verified dataset checks from saved notebook output
+### Recalculated business KPIs
 
-| Check | Recorded result |
+These values were recalculated directly from the current CSV, rather than copied from notebook output.
+
+| KPI | Result |
 |---|---:|
-| Rows | 9,994 |
-| Columns | 21 |
-| Non-null values | 9,994 in each column |
+| Total sales | $2,297,200.86 |
+| Total profit | $286,397.02 |
+| Profit margin (total profit ÷ total sales) | 12.47% |
+| Quantity sold | 37,873 |
+| Distinct orders | 5,009 |
+| Distinct customers | 793 |
+| Distinct products | 1,862 |
+| Loss-making order lines | 1,871 (18.72% of rows) |
 
-### SQL analysis available
+### Findings
 
-The SQL script defines queries for total sales, profit, quantity, distinct orders/customers/products, profit margin, loss-making lines/orders, region and segment performance, category/sub-category performance, product/customer rankings, shipping modes, geography, discount bands, and monthly trends.
+- **Technology** generated the highest category sales ($836,154.03) and profit ($145,454.95), with a 17.40% margin.
+- **Furniture** generated $741,999.80 in sales but only $18,451.27 profit, a 2.49% margin.
+- **West** led regional sales ($725,457.82) and profit ($108,418.45); **Central** had the lowest regional margin at 7.92%.
+- **Texas** had $170,188.05 in sales but a loss of $25,729.36 (−15.12% margin).
+- The **Tables** sub-category lost $17,725.48 (−8.56% margin); **Bookcases** lost $3,472.56 (−3.02% margin).
 
-The notebook output reviewed here does **not** contain saved numerical results for these aggregate SQL queries. I have therefore not invented sales or profit totals. Run `superstore_analysis.sql` against the current dataset and add the actual query outputs. The script uses PostgreSQL-style functions such as `DATE_TRUNC` and `TO_DATE`.
+These are descriptive patterns in this dataset, not causal claims. The product/customer-level aggregates use the dataset's recorded sales and profit fields.
+
+### SQL repair and validation status
+
+The SQL script has been repaired to use PostgreSQL consistently, create a `superstore_raw` staging table, and build the normalized `ss` view from that staging table instead of incorrectly selecting from itself. It includes a `psql \\copy` import instruction.
+
+The CSV metrics above have been independently recalculated, but the SQL script has **not** been executed against a live PostgreSQL instance in this review. After importing the CSV, compare the SQL KPI output to this table as the final cross-check.
 
 ## 🖼️ Screenshots
 
@@ -132,10 +158,10 @@ No image files were confirmed for this repository during this update. If you hav
 
 ## ⚠️ Limitations
 
-- Dataset checks come from saved notebook output and should be rerun against the current CSV.
-- Aggregate KPI values have not been recorded in the notebook output reviewed here.
-- Dataset provenance/license should be documented.
-- Discount/profit relationships are descriptive and do not by themselves establish causation.
+- CSV aggregations were recalculated directly, but SQL execution against PostgreSQL has not yet been independently run.
+- The analysis is descriptive and cannot establish that discounts caused losses.
+- The source dataset publisher/license should be documented.
+- Reconcile Power BI measures with the recalculated KPI table before claiming dashboard parity.
 
 ## 🚀 Future Improvements
 
