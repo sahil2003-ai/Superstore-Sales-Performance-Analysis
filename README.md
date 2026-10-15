@@ -1,42 +1,26 @@
 # Superstore Sales and Performance Analytics
 
-A retail analytics project combining SQL, Python, and Power BI to investigate sales performance, profitability, customer segments, regional patterns, and discount effects.
+A retail analytics project combining SQL, Python, and Power BI to explore sales, profitability, customer segments, regions, and discount patterns.
 
-## Business Objective
-Turn transaction-level retail data into understandable metrics that can help stakeholders explore what drives revenue and profit and where performance may need further investigation.
+## Step-by-step workflow
 
-## Dataset
-The existing project documentation describes 9,994 transactions, 793 unique customers, and 21 fields. Verify these counts against the current CSV before relying on them. The described fields include order and ship dates, customer and product attributes, sales, profit, discount, and geography.
-
-## Analysis Areas
-- Sales and profit trends
-- Product category and sub-category performance
-- Customer-segment and regional comparisons
-- Discount and profitability relationships
-- Shipping and order patterns
+1. **Inspect the dataset** — open `Superstore.csv` and review columns, types, dates, missing values, and duplicates.
+2. **Prepare the data** — follow `superstore_analysis.ipynb` to clean fields and validate order, customer, product, sales, discount, and profit values.
+3. **Define KPIs** — document sales, profit, order count, average order value, and profit margin formulas before calculating them.
+4. **Run SQL queries** — use `superstore_analysis.sql` to summarize trends by product, category, region, segment, and discount where supported.
+5. **Explore with Python** — review distributions, trends, and unusual values in the notebook.
+6. **Open the dashboard** — load `Superstore Sales Dashboard.pbix` in Power BI Desktop and refresh its data source if required.
+7. **Cross-check totals** — compare the dashboard's key measures with SQL/Python outputs.
+8. **Write insights** — add three to five verified findings, the evidence behind each, and a practical business implication.
 
 ## Tools
-- SQL for KPI queries and grouped analysis
-- Python and pandas for data exploration
-- Power BI for interactive reporting
+SQL, Python, pandas, Jupyter Notebook, Power BI.
 
-## Project Files
-The current README lists a CSV dataset, Python notebook, SQL script, and Power BI report. Refer to the repository for the latest paths and file names.
+## Dataset
+The prior README documents 9,994 records. Confirm this against `Superstore.csv` before quoting it.
 
-## How to Review
-1. Load the dataset and validate types, dates, and missing values.
-2. Run the SQL queries and inspect the KPI definitions.
-3. Review the notebook for data cleaning and calculations.
-4. Open the Power BI report and verify its measures and filters.
+## Screenshots
+No screenshot files were found in the repository root. Add dashboard images under `images/` and embed them here.
 
-## Skills Demonstrated
-Retail analytics, SQL, exploratory data analysis, profitability analysis, KPI reporting, and dashboard development.
-
-## Recommended Improvements
-- Add dashboard screenshots.
-- Include three to five verified findings and their business implications.
-- Document the dataset source and currency.
-- Define profit margin and discount measures clearly.
-- Add setup instructions and data-quality checks.
-
-> The README describes the analytical scope; only report numerical findings that can be reproduced from the included analysis.
+## Next improvements
+Add source/licensing details, screenshots, KPI definitions, and reproducible findings.
