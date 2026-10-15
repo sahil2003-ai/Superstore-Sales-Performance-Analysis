@@ -142,7 +142,7 @@ These are descriptive patterns in this dataset, not causal claims. The product/c
 
 ### SQL repair and validation status
 
-The SQL script has been repaired to use PostgreSQL consistently, create a `superstore_raw` staging table, and build the normalized `ss` view from that staging table instead of incorrectly selecting from itself. It includes a `psql \\copy` import instruction.
+The SQL script has been repaired to use PostgreSQL consistently, create a `superstore_raw` staging table, import `Superstore.csv` with a `psql \\copy` command, and build the normalized `ss` view from the staging table instead of incorrectly selecting from itself. It truncates the staging table before reimporting, so rerunning it does not append duplicate rows. Run it from the repository root against an existing PostgreSQL database: `psql -d YOUR_DATABASE -f superstore_analysis.sql`.
 
 The CSV metrics above have been independently recalculated, but the SQL script has **not** been executed against a live PostgreSQL instance in this review. After importing the CSV, compare the SQL KPI output to this table as the final cross-check.
 
