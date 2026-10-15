@@ -27,8 +27,9 @@ CREATE TABLE IF NOT EXISTS superstore_raw (
   "Profit" NUMERIC(12,4)
 );
 
--- In psql, import the CSV with:
--- \copy superstore_raw FROM 'Superstore.csv' WITH (FORMAT csv, HEADER true)
+-- Re-import deterministically so rerunning does not duplicate rows.
+TRUNCATE TABLE superstore_raw;
+\\copy superstore_raw FROM 'Superstore.csv' WITH (FORMAT csv, HEADER true)
 
 DROP VIEW IF EXISTS ss_dates;
 DROP VIEW IF EXISTS ss;
