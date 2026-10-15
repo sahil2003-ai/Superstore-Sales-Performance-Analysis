@@ -1,59 +1,33 @@
 # Superstore Sales and Performance Analytics
 
-> A retail analytics project using SQL, Python, and Power BI to examine sales, profit, customer segments, regions, categories, and discount patterns.
+A retail analytics project using SQL, Python, and Power BI to examine sales, profit, customer segments, regions, categories, and discount patterns.
 
-![Python](https://img.shields.io/badge/Python-Analysis-blue)
-![SQL](https://img.shields.io/badge/SQL-Analytics-blue)
-![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow)
+![Python](https://img.shields.io/badge/Python-Analysis-blue) ![SQL](https://img.shields.io/badge/SQL-Analytics-blue) ![Power%20BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811)
 
-## 📌 Table of Contents
+## Contents
+- [Overview](#overview)
+- [Business Questions](#business-questions)
+- [Dataset](#dataset)
+- [Workflow](#workflow)
+- [Results and Metrics](#results-and-metrics)
+- [Technology Stack](#technology-stack)
+- [Repository Structure](#repository-structure)
+- [Run the Project](#run-the-project)
+- [Limitations and Next Steps](#limitations-and-next-steps)
 
-- [Overview](#-overview)
-- [Problem Statement](#-problem-statement)
-- [Objectives](#-objectives)
-- [Features](#-features)
-- [Dataset](#-dataset)
-- [Tech Stack](#-tech-stack)
-- [Project Workflow](#-project-workflow)
-- [Repository Structure](#-repository-structure)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Results and Insights](#-results-and-insights)
-- [Screenshots](#-screenshots)
-- [Challenges and Solutions](#-challenges-and-solutions)
-- [Limitations](#-limitations)
-- [Future Improvements](#-future-improvements)
-- [What I Learned](#-what-i-learned)
-- [Author](#-author)
-- [License](#-license)
+## Overview
+This project analyzes a Superstore transaction dataset to compare sales and profitability across products, categories, customer segments, and regions. It combines Python EDA, SQL queries, and a Power BI dashboard.
 
-## 📖 Overview
+## Business Questions
+- How do sales and profit vary across categories and regions?
+- Which product groups contribute to sales but show weaker profit?
+- How do discounts and customer segments relate to the recorded results?
+- Do SQL and Power BI measures reconcile with the source CSV?
 
-This project explores a Superstore retail transaction dataset and calculates sales and profitability metrics across products, categories, customer segments, and geography. It combines Python EDA, SQL queries, and a Power BI dashboard.
-
-## 🎯 Problem Statement
-
-Sales volume alone does not show whether a business is profitable. Retail teams need consistent measures of revenue, profit, margin, and loss-making transactions to identify where further investigation is warranted.
-
-## 🎯 Objectives
-
-- Profile the data and validate record quality.
-- Calculate sales, profit, and profit margin.
-- Compare product, category, region, and customer-segment performance.
-- Reconcile Python, SQL, and Power BI metrics.
-
-## ✨ Features
-
-- Dataset profiling and descriptive analysis.
-- Sales and profit aggregation by category and geography.
-- Identification of loss-making transaction lines and products.
-- Dashboard-based reporting with cross-tool validation as a follow-up task.
-
-## 📂 Dataset
-
+## Dataset
 Source file: `Superstore.csv`.
 
-| Metric | Verified value |
+| Metric | Value |
 |---|---:|
 | Rows | 9,994 |
 | Columns | 21 |
@@ -63,64 +37,15 @@ Source file: `Superstore.csv`.
 | Total quantity | 37,873 |
 | Missing cells | 0 |
 
-The dataset contains transaction dates, customer/order identifiers, geographic dimensions, product information, quantity, sales, discounts, and profit. Dataset source URL and reuse terms should be documented before redistribution.
-
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
-|---|---|
-| Python / pandas | Data profiling and EDA |
-| SQL | Grouped business queries |
-| Jupyter Notebook | Reproducible analysis |
-| Power BI | Interactive reporting |
-
-## 🔄 Project Workflow
-
+## Workflow
 1. Load and profile `Superstore.csv`.
 2. Inspect data types, missing values, and key identifiers.
-3. Calculate sales, profit, margin, and loss-line metrics.
-4. Compare results across categories, products, and regions.
-5. Review SQL query definitions.
-6. Refresh the Power BI report and reconcile its measures with the CSV calculations.
+3. Calculate sales, profit, margin, and loss-making line metrics.
+4. Compare results across categories, products, segments, and regions.
+5. Run the SQL analysis.
+6. Refresh the Power BI report and reconcile its measures with CSV calculations.
 
-## 🗂️ Repository Structure
-
-```text
-Superstore-Sales-Performance-Analysis/
-├── Superstore.csv
-├── superstore_analysis.ipynb
-├── superstore_analysis.sql
-├── Superstore Sales Dashboard.pbix
-└── README.md
-```
-
-## ⚙️ Installation
-
-### Prerequisites
-
-- Python and Jupyter Notebook
-- SQL database compatible with the script
-- Power BI Desktop for the PBIX report
-
-### Setup
-
-```bash
-git clone https://github.com/sahil2003-ai/Superstore-Sales-Performance-Analysis.git
-cd Superstore-Sales-Performance-Analysis
-python -m venv .venv
-```
-
-Activate the environment and install pandas plus the libraries imported by the notebook. A root-level `requirements.txt` was not identified in the repository inventory.
-
-## ▶️ Usage
-
-- Open and run `superstore_analysis.ipynb` from top to bottom.
-- Load the CSV into your SQL engine and execute `superstore_analysis.sql` after confirming its dialect.
-- Open `Superstore Sales Dashboard.pbix` in Power BI Desktop and refresh its data source.
-
-## 📊 Results and Insights
-
-### Key Findings
+## Results and Metrics
 
 | Metric | Recalculated result |
 |---|---:|
@@ -139,51 +64,41 @@ Activate the environment and install pandas plus the libraries imported by the n
 | Tables profit | −$17,725.48 |
 | Bookcases profit | −$3,472.56 |
 
-Technology's calculated profit margin is 17.40%; Furniture's is 2.49%. Texas has a calculated profit margin of −15.12%. These are descriptive findings and do not establish why a category or region performed differently.
+Technology's calculated profit margin is 17.40%; Furniture's is 2.49%. Texas has a calculated profit margin of −15.12%. These findings are descriptive and do not establish why a category or region performed differently.
 
-### Evaluation
+The figures were recalculated from the CSV. SQL and Power BI were not independently executed/refreshed in this review, so dashboard parity remains unverified.
 
-The figures above were recalculated from the current CSV. SQL and Power BI were not independently executed/refreshed in this review, so dashboard parity remains unverified.
+## Technology Stack
+- Python and pandas for data profiling and EDA
+- Jupyter Notebook for reproducible analysis
+- SQL for grouped business queries
+- Power BI for interactive reporting
 
-## 🖼️ Screenshots
+## Repository Structure
+```text
+Superstore-Sales-Performance-Analysis/
+├── Superstore.csv
+├── superstore_analysis.ipynb
+├── superstore_analysis.sql
+├── Superstore Sales Dashboard.pbix
+└── README.md
+```
 
-The repository includes a Power BI report file. A rendered screenshot was not independently validated here; add screenshots captured from the actual report pages.
+## Run the Project
+- Run `superstore_analysis.ipynb` from top to bottom.
+- Load `Superstore.csv` into your SQL engine and run `superstore_analysis.sql` after confirming the SQL dialect.
+- Open `Superstore Sales Dashboard.pbix` in Power BI Desktop and refresh its source.
+- Compare the same date filters and formulas across all tools.
 
-## 🧩 Challenges and Solutions
+## Limitations and Next Steps
+- Document the dataset's original source and license.
+- Reconcile SQL and Power BI values against the CSV calculations.
+- Add genuine screenshots from the refreshed report.
+- Examine discount patterns without assuming that discounts cause losses.
+- Include data dictionary and metric definitions.
 
-| Challenge | Approach |
-|---|---|
-| Sales and profit can be confused | Define margin as total profit divided by total sales |
-| Loss-making records can be overlooked by aggregate totals | Examine transaction lines and product-level aggregates |
-| Results can differ between tools | Reconcile filters, date ranges, and formulas across Python, SQL, and Power BI |
+## Skills Demonstrated
+Retail analytics, data cleaning, sales and profit metrics, SQL aggregation, Python EDA, Power BI reporting, and cross-tool validation.
 
-## ⚠️ Limitations
-
-- The analysis is descriptive; it does not prove discounts cause losses.
-- Power BI and SQL outputs need reconciliation with the recalculated CSV values.
-- Dataset provenance and license should be recorded.
-
-## 🚀 Future Improvements
-
-- [ ] Validate SQL results against the Python metrics.
-- [ ] Refresh and reconcile every Power BI measure.
-- [ ] Add screenshots and a concise executive summary.
-- [ ] Investigate discount, shipping, and product interactions without making causal claims.
-
-## 📚 What I Learned
-
-- Building consistent business KPIs from transaction-level data.
-- Combining SQL, Python, and BI reporting.
-- Interpreting profitability alongside sales volume.
-- Communicating descriptive findings without overstating causality.
-
-## 👤 Author
-
-**Sahil Gaikwad**
-
-- GitHub: [sahil2003-ai](https://github.com/sahil2003-ai)
-- LinkedIn: [Sahil Gaikwad](https://www.linkedin.com/in/sahil-gaikwad-a76b7224a/)
-
-## 📄 License
-
-Check the repository for its actual license and document the dataset's original source and reuse terms before redistribution.
+## Author
+**Sahil Gaikwad** · [GitHub](https://github.com/sahil2003-ai) · [LinkedIn](https://www.linkedin.com/in/sahil-gaikwad-a76b7224a/)
